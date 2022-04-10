@@ -1,0 +1,221 @@
+﻿@using QuanLyBanHang_KutsuSneakers.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .title {
+        text-align: center;
+        background-color: #FFF;
+        font-weight: bold;
+        padding: 5px;
+        border-top: hidden !important;
+    }
+
+    .submit {
+        background-color: #FFF;
+        font-weight: 600;
+        color: black;
+        margin-left: 15px;
+        margin-right: 15px;
+        border: 2px solid #000;
+        border-radius: 5px;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+        .submit:hover {
+            background-color: rgba(220, 220, 220, 1);
+            color: #000;
+        }
+
+    .Delete-btn {
+        text-decoration: none;
+    }
+
+    .fa {
+        color: #000;
+    }
+
+    body {
+        margin-top: 150px;
+    }
+
+    .title-box {
+        margin-bottom: 20px;
+    }
+
+    .details {
+        margin-top: 10px;
+    }
+
+    .TongSoluong {
+        margin: 10px;
+        padding: 5px 10px;
+        border-bottom: hidden !important;
+    }
+
+    .TongTien {
+        padding-right: 10px;
+    }
+
+    .Delete-btn {
+        width: 80px;
+    }
+
+    .Details-btn {
+        width: 80px;
+    }
+
+    .Soluong {
+        width: 50px;
+        text-align: center;
+    }
+
+    .dongia {
+        padding: 10px;
+    }
+
+    .thanhtien {
+        padding: 10px;
+    }
+
+    .tensp {
+        text-align: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .XoaAll {
+        padding: 25px 10px 25px;
+        border-top: hidden !important;
+        border-bottom: hidden !important;
+    }
+
+    table {
+    }
+
+    .box {
+        border-bottom: none;
+        border-top: none;
+    }
+
+    main .tensp {
+        border-right: none;
+    }
+
+    td {
+        border-left: hidden !important;
+        border-right: hidden !important;
+        padding: 3px 7px 3px 7px;
+    }
+
+    .abc {
+        color: red;
+    }
+
+    .title {
+        padding-bottom: 20px;
+    }
+
+    .title-2 {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    #over {
+        border-bottom: hidden !important;
+    }
+
+    #title {
+        border-top: hidden !important;
+        font-weight: bold;
+    }
+</style>
+<body>
+    <h2 class="title" style="text-align:center">ĐƠN ĐẶT HÀNG</h2>
+    <table align="center" border="1">
+        <tr id="title">
+            <td>Mã SP</td>
+            <td>Tên SP</td>
+            <td>Ảnh SP</td>
+            <td>SL</td>
+            <td>Size</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center; font-weight: bold">
+                <td>@item.MaSP</td>
+                <td>@item.TenSP</td>
+                <td><img src="~/San_Pham/@item.AnhSP" width="200px" height="100px" /></td>
+                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSP = item.MaSP }))
+                {
+                    <td>@item.SL</td>
+                    <td>@item.ChiTiet.Size</td>
+                    <td>@String.Format("{0:0,0}", item.DonGia) VNĐ</td>
+                    <td>@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+                }
+            </tr>
+        }
+        <tr id="over" style="text-align:right; font-weight: bold; color:crimson">
+            <td colspan="4">Số lượng: @ViewBag.TongSL</td>
+            <td colspan="5">Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+        </tr>
+        <tr id="over" style="font-weight:bold; text-align: right">
+            <td colspan="7">
+                @Html.ActionLink("Trở Về Giỏ Hàng", "GioHang", "GioHang")
+            </td>
+        </tr>
+    </table>
+    <h2 class="title-2" style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
+    @{
+        KHACHHANG kh = (KHACHHANG)Session["USERNAME"];
+    }
+    <table align="center">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr style="height:40px">
+                <td>Họ tên:</td>
+                <td style="font-weight:bold"> @kh.TENKH </td>
+            </tr>
+            <tr style="height:40px">
+                <td>SĐT:</td>
+                <td style="font-weight:bold"> @kh.SDT </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Địa chỉ:</td>
+                <td style="font-weight:bold"> @kh.DIACHI </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Phương thức thanh toán:</td>
+                <td>
+                    @Html.DropDownList("MAPT")
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Ngày đặt:</td>
+                <td style="font-weight:bold"> @DateTime.Now.ToShortDateString() </td>
+            </tr>
+            <tr style="height:40px">
+                <td>Ngày giao hàng:</td>
+                <td style="font-weight:bold">
+                    <input type="date" name="NgayGiao" />
+                </td>
+            </tr>
+            <tr style="height:40px">
+                <td style="font-weight:bold">
+                    <input type="submit" value="Đặt Hàng" />
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+
+
+

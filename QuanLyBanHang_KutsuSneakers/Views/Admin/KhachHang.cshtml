@@ -1,0 +1,150 @@
+﻿@using QuanLyBanHang_KutsuSneakers.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<QuanLyBanHang_KutsuSneakers.Models.KHACHHANG>
+@{
+    ViewBag.Title = "KhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .search-s {
+        width: 100%;
+        height: 50px;
+    }
+
+    .search-box {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        transform: translate(-50%,-50%);
+        background: #2f3640;
+        height: 40px;
+        border-radius: 40px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+        .search-box:hover > .search-txt {
+            width: 360px;
+            padding: 0 6px;
+        }
+
+        .search-box:hover > .search-btn {
+            background: white;
+        }
+
+    .search-btn {
+        color: #e84118;
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #2f3640;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+    }
+
+    .search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: white;
+        font-size: 16px;
+        transition: 0.4s;
+        line-height: 40px;
+        margin-left: 18px;
+        width: 0px;
+    }
+
+    .button-icon {
+        border: none;
+        outline: none;
+        background: none;
+    }
+</style>
+<body>
+    <section class="section" id="products">
+        <h2>QUẢN LÝ THÔNG TIN KHÁCH HÀNG</h2>
+        @using (Html.BeginForm("KhachHang", "Admin"))
+        {
+            <div class="search-s">
+                <div class="search-box">
+                    <input type="text" placeholder="Nhập để tìm kiếm..." name="SearchSP" class="search-txt" />
+                    <button type="submit" class="search-btn"><i class="fa fa-search" id="icon-search"></i></button>
+                </div>
+            </div>
+        }
+        <table class="table">
+            <tr>
+                <th>Tên khách hàng</th>
+                <th>Username</th>
+                <th style="width:250px">Password</th>
+                <th>Địa chỉ</th>
+                <th>SĐT</th>
+                <th>Email</th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.USERNAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MATKHAU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DIACHI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chi tiết", "DetailsKH", new { id = item.MAKH }) |
+                        @Html.ActionLink("Xóa", "XoaKH", new { id = item.MAKH })
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li>
+                        Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                    </li>
+                    <li>
+                        @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+

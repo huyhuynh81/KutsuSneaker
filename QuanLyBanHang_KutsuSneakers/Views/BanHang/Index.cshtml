@@ -1,0 +1,212 @@
+﻿@model IEnumerable<QuanLyBanHang_KutsuSneakers.Models.SANPHAM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<meta name="viewport" content="with=device-with, initial-scale=1.0" />
+
+<body>
+   
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>We Are Kutsu Sneakers</h4>
+                                <div class="main-border-button">
+                                    <a href="#">Tìm hiểu thêm</a>
+                                </div>
+                            </div>
+                            <img src="~/San_Pham/rigt_banner_1.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Jordan</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Jordan</h4>
+                                                <p>Sản phẩm Jordan tại Kutsu Sneakers</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/San_Pham/left_banner_jordan.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Nike</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Nike</h4>
+                                                <p>Sản phẩm Nike tại Kutsu Sneakers.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/San_Pham/left_banner_nike.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Adidas</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Adidas</h4>
+                                                <p>Sản phẩm Adidas tại Kutsu Sneakers.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/San_Pham/left_banner_adidas.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Puma</h4>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Puma</h4>
+                                                <p>Sản phẩm Puma tại Kutsu Sneakers.</p>
+                                                <div class="main-border-button">
+                                                    <a href="#">Tìm hiểu thêm</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="~/San_Pham/left_banner_puma.jpg" width="347" height="320">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    <!-- ***** New - in Start ******-->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Sản phẩm nổi bật</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var sp in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})">
+                                        <img src="~/San_Pham/@sp.ANHSP" alt="@sp.TENSP">
+                                    </a>
+                                </div>
+                                <div class="down-content">
+                                    <h4>@sp.TENSP</h4>
+                                    <span>@String.Format("{0:0,0}", sp.DONGIA) VNĐ</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+    <!-- ***** New - in End ******-->
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Sản phẩm sắp ra mắt</h2>
+                        <span>Phối màu khá giống Jordan 1 Retro AJKO Chicago nhưng được làm bằng chất da giống các đôi giày khác. Tuy nhiên, nhà phát hành lại lấy ý tưởng từ đôi Jordan 1 High Chicago lịch sử của hãng với tông màu đỏ, trắng. Mặc dù thế, với phối màu Heritage cho thấy rõ thương hiệu đang tôn vinh những di sản mà Jordan cũng như đôi Bulls đã làm trong lịch sử.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Ngày phát hành: 09/04/2022</p>
+                        </div>
+                        <p>Mô hình mà bạn nhìn thấy ở đây cho thấy rằng Air Jordan 6 này sẽ được trang bị lớp nền Pure Platinum với các lớp phủ màu trắng được kết hợp giữa da lộn, da nubuck và da thuộc. Thêm một số điểm tương phản cho đôi giày thể thao này là các điểm nhấn Mint Foam ở khóa ren, gót, đế giữa và đế có thương hiệu. </p>
+                        <div class="main-border-button">
+                            <a href="/BanHang/SanPham">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Jordan 1 High Heritage</h4>
+                                    <span>Phiên bản giới hạn</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="~/San_Pham/Jordan1_High_Heritage.jpg" height="255px">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="~/San_Pham/Air_Jordan_6_Tiffany_Blue.jpg" height="255px">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Jordan 6 WMNS Tiffany Blue</h4>
+                                    <span>Chỉ 500 đôi trên toàn cầu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+</body>

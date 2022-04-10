@@ -1,0 +1,27 @@
+﻿@model IEnumerable<QuanLyBanHang_KutsuSneakers.Models.CTSP>
+<style>
+    .submit {
+        background-color: #FFF;
+        font-weight: 600;
+        color: black;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: 2px solid #000;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+        .submit:hover {
+            background-color: rgba(220, 220, 220, 1);
+            color:black;
+        }
+
+</style>
+@foreach (var ctsp in Model)
+{
+    <a id="ls-size" href="javascript: changeSize('@ctsp.SIZE')" class="submit" >
+        @ctsp.SIZE
+    </a>
+}
+

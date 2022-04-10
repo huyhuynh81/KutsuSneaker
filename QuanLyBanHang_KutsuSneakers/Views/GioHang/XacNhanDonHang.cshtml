@@ -1,0 +1,197 @@
+﻿
+@{
+    Layout = null;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>XacNhanDonHang</title>
+</head>
+<style>
+    body {
+        background-color: lightgray;
+    }
+
+    .tb {
+        height: 5%;
+        width: 75%;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        display: flex;
+        margin-top: 50px;
+    }
+
+    .xndh {
+        height: 75%;
+        width: 65%;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+    }
+
+    .xn-1 {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+        text-align: center;
+        font-size: 80px;
+        border-radius: 500px;
+        height: 100px;
+        width: 100px;
+    }
+
+    #btn {
+        margin-top: 85px;
+        font-size: 100px;
+        color: lightgreen;
+    }
+
+    .note {
+        height: 58px;
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 150px;
+        text-align: center;
+    }
+
+    .note-2 {
+        height: 60px;
+        width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .note-3 {
+        height: 100px;
+        width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    h2 {
+        color: green;
+        font-size: 42px;
+    }
+
+    p {
+        color: black;
+        font-size: 22px;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    .btn-back {
+        height: 70px;
+        width: 220px;
+        font-size: 20px;
+        background-image: radial-gradient(#bfffcd, #93efdd);
+        color: white;
+        border-radius: 30px;
+        border-inline-color: white;
+    }
+        .btn-back:hover{
+            cursor: pointer;
+        }
+
+    .cbuoc {
+        height: 50px;
+        width: 65%;
+        background-color: white;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 60px;
+        margin-top: 80px;
+    }
+
+    #b1 {
+        font-size: 16px;
+        margin: auto;
+        font-weight: 400;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        width: 140px;
+    }
+
+    .buoc {
+        margin-right: 50px;
+        margin-left: 30px;
+        width: 160px;
+        display: flex;
+        padding: 15px 0px;
+    }
+
+        .buoc #icon-b {
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 18px;
+        }
+
+    #now {
+        color: lightgreen;
+    }
+
+    .buoc .icon {
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
+<body>
+    <div class="cbuoc">
+        <div class="buoc">
+            <span class="icon">
+                <i id="icon-b" class="fa fa-shopping-cart"></i>
+            </span>
+            <p id="b1">Chọn sản phẩm</p>
+        </div>
+        <div class="buoc">
+            <span class="icon">
+                <i id="icon-b" class="fa fa-cart-arrow-down"></i>
+            </span>
+            <p id="b1">Thêm vào giỏ hàng</p>
+        </div>
+        <div class="buoc">
+            <span class="icon">
+                <i id="icon-b" class="fa fa-pencil-square"></i>
+            </span>
+            <p id="b1">Xác nhận thông tin</p>
+        </div>
+        <div id="icon-b" class="buoc">
+            <span class="icon" id="now">
+                <i id="icon-b" class="fa fa-check-square"></i>
+            </span>
+            <p id="b1">Hoàn tất</p>
+        </div>
+    </div>
+    <div class="xndh">
+        <div class="xn-1">
+            <i class="fa fa-check-circle" id="btn"></i>
+        </div>
+        <div class="note">
+            <h2>Thanh toán thành công</h2>
+        </div>
+        <div class="note-2">
+            <p>Đơn hàng của quý khách đã được gửi.</p>
+            <p>Kutsu Sneaker sẽ liên hệ với quý khác trong thời gian sớm nhất và giao hàng đúng hẹn</p>
+        </div>
+        <div class="note-3">
+            <button class="btn-back"><a href="/BanHang/Index">Quay về trang chủ</a></button>
+        </div>
+    </div>
+</body>
+</html>

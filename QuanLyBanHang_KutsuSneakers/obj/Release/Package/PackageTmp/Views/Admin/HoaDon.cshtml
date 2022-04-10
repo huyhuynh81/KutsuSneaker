@@ -1,0 +1,237 @@
+﻿@model IEnumerable<QuanLyBanHang_KutsuSneakers.Models.HOADON>
+
+@{
+    ViewBag.Title = "HoaDon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .search-s {
+        width: 100%;
+        height: 50px;
+    }
+
+    .search-box {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        transform: translate(-50%,-50%);
+        background: #2f3640;
+        height: 40px;
+        border-radius: 40px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+        .search-box:hover > .search-txt {
+            width: 360px;
+            padding: 0 6px;
+        }
+
+        .search-box:hover > .search-btn {
+            background: white;
+        }
+
+    .search-btn {
+        color: #e84118;
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #2f3640;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+    }
+
+    .search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: white;
+        font-size: 16px;
+        transition: 0.4s;
+        line-height: 40px;
+        margin-left: 18px;
+        width: 0px;
+    }
+
+    .button-icon {
+        border: none;
+        outline: none;
+        background: none;
+    }
+    @*btn*@ .body {
+        font-family: 'Poppins',sans-serif;
+        font-weight: 400;
+    }
+
+    .container-1 {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .buttons {
+        position: absolute;
+        right: 2%;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        position: relative;
+        margin: 32px;
+    }
+
+    .btn-1 {
+        background: #000;
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+
+        .btn-1::after, .btn-1::before {
+            content: "";
+            position: absolute;
+            opacity: 0.3;
+            background: #000;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-1:hover {
+            transform: translate(-12px,-12px);
+        }
+
+            .btn-1:hover::after {
+                transform: translate(6px,6px);
+            }
+
+            .btn-1:hover::before {
+                transform: translate(12px,12px);
+            }
+
+    .btn-2 {
+        color: #000;
+    }
+
+        .btn-2::after, .btn-2::before {
+            border: 3px solid black;
+            content: "";
+            position: absolute;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            left: 0;
+            bottom: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-2:hover::after {
+            transform: translate(-5px,-5px);
+        }
+
+        .btn-2:hover::before {
+            transform: translate(5px,5px);
+        }
+
+</style>
+<body>
+    <h2>QUẢN LÝ ĐƠN ĐẶT HÀNG</h2>
+    <div class="container-1">
+        <div class="buttons">
+            <button type="button" class="btn btn-2" onclick="location.href='@Url.Action("ThemHD", "Admin")'">
+                Thêm mới
+            </button>
+        </div>
+    </div>
+    @using (Html.BeginForm("HoaDon", "Admin"))
+    {
+        <div class="search-s">
+            <div class="search-box">
+                <input type="text" placeholder="Nhập để tìm kiếm..." name="SearchSP" class="search-txt" />
+                <button type="submit" class="search-btn"><i class="fa fa-search" id="icon-search"></i></button>
+            </div>
+        </div>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                Mã HD
+            </th>
+            <th>
+                Tên KH
+            </th>
+            <th>
+                Ngày đặt hàng
+            </th>
+            <th>
+                Ngày giao hàng
+            </th>
+            <th>
+                Phương thức thanh toán
+            </th>
+            <th>
+                Đã thanh toán
+            </th>
+            <th>
+                Tình trạng đơn hàng
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a>HD0</a>@Html.DisplayFor(modelItem => item.MAHD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYDATHANG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYNHANHANG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHUONGTHUCTHANHTOAN.TENPT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DATHANHTOAN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TINHTRANG.TENTT)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "SuaHD", new { id = item.MAHD }) |
+                    @Html.ActionLink("Chi tiết", "CTHD", new { id = item.MAHD }) |
+                    @Html.ActionLink("Xóa", "XoaHD", new { id = item.MAHD })
+                </td>
+            </tr>
+        }
+    </table>
+</body>
