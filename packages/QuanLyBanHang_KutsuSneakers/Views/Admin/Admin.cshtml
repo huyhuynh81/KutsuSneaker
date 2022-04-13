@@ -1,0 +1,168 @@
+﻿@using QuanLyBanHang_KutsuSneakers.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<QuanLyBanHang_KutsuSneakers.Models.ADMIN>
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        padding-top: 120px;
+    }
+
+    td {
+        font-size: 14px;
+    }
+    @*btn*@ 
+    .body {
+        font-family: 'Poppins',sans-serif;
+        font-weight: 400;
+    }
+
+    .container-1 {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .container-1 {
+        height:80px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+    }
+
+    .buttons {
+        position: absolute;
+        right: 2%;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 1.25rem;
+        position: relative;
+        margin: 32px;
+    }
+
+    .btn-1 {
+        background: #000;
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+
+        .btn-1::after, .btn-1::before {
+            content: "";
+            position: absolute;
+            opacity: 0.3;
+            background: #000;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-1:hover {
+            transform: translate(-12px,-12px);
+        }
+
+            .btn-1:hover::after {
+                transform: translate(6px,6px);
+            }
+
+            .btn-1:hover::before {
+                transform: translate(12px,12px);
+            }
+
+    .btn-2 {
+        color: #000;
+    }
+
+        .btn-2::after, .btn-2::before {
+            border: 3px solid black;
+            content: "";
+            position: absolute;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            left: 0;
+            bottom: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-2:hover::after {
+            transform: translate(-5px,-5px);
+        }
+
+        .btn-2:hover::before {
+            transform: translate(5px,5px);
+        }
+
+</style>
+<body>
+    <section class="section" id="products">
+        <h2>QUẢN LÝ THÔNG TIN NHÂN VIÊN</h2>
+        <div class="container-1">
+            <div class="buttons">
+                <button type="button" class="btn btn-2" onclick="location.href='@Url.Action("ThemAdmin", "Admin")'">
+                    Thêm mới
+                </button>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Mã nhân viên</th>
+                <th>Tên đăng nhập</th>
+                <th>Mật khẩu</th>
+                <th>Tên nhân viên</th>
+                <th>Phân quyền</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a>NV0</a>@Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.USERNAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PASSWORD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TENADMIN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ROLE.ROLENAME)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "SuaAdmin", new { id = item.ID }) |
+                        @Html.ActionLink("Xóa", "XoaAdmin", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li>
+                        Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                    </li>
+                    <li>
+                        @Html.PagedListPager(Model, page => Url.Action("Admin", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>

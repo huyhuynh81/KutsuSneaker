@@ -1,0 +1,103 @@
+﻿@model QuanLyBanHang_KutsuSneakers.Models.SANPHAM
+
+@{
+    ViewBag.Title = "SuaSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+    <h2>Chỉnh sửa thông tin sản phẩm</h2>
+
+    @using (Html.BeginForm("SuaSP", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.MASP)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MASP, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div style="font:18px; padding: 5px 0 0 5px"> @Model.MASP </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TENSP, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TENSP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TENSP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DONGIA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MOTA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MOTA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NGAYCAPNHAT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NGAYCAPNHAT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NGAYCAPNHAT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ANHSP, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    Chọn ảnh mới
+                    <input type="file" name="fileUpLoad" />
+                    <img src="@Url.Content("~/San_Pham/" + Model.ANHSP)" width="250px" />
+                    @ViewBag.Thongbao
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MALOAI, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MALOAI")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MANH, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MANH")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Trở về trang quản lý sản phẩm", "SanPham")
+    </div>
+</body>

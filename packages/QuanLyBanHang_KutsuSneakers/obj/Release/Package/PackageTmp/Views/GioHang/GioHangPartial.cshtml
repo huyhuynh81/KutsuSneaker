@@ -1,0 +1,83 @@
+﻿
+<style>
+    .header-cart {
+    }
+
+    .header-cart-wrap {
+        position: relative;
+        display: inline-block;
+        padding: 0 9px;
+        cursor: pointer;
+    }
+
+        .header-cart-wrap:hover .header_cart-list {
+            display: block;
+        }
+
+    .header_cart-list {
+        position: absolute;
+        top: calc(100% +4px);
+        right: -1px;
+        background-color: white;
+        width: 400px;
+        border-radius: 2px;
+        box-shadow: 0 1px 3.125rem 0 rgba(0,0,0,0.2);
+        display: none;
+    }
+
+        .header_cart-list::after {
+            content: "";
+            position: absolute;
+            left: 361px;
+            top: -25px;
+            border-width: 16px 20px;
+            border-style: solid;
+            border-color: transparent transparent white transparent;
+        }
+
+    .header_cart-img {
+        width: 55%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header_cart-list--no-cart {
+        padding: 24px 0;
+    }
+
+    .header_cart-list--no-cart-msg {
+        display: block;
+        font-size: 1rem;
+        margin-top: 12px;
+        text-align: center;
+        font-weight: 400;
+    }
+</style>
+<li class="scroll-to-section">
+    <a href="@Url.Action("GioHang", "GioHang")">
+        @if (ViewBag.TongSL == 0)
+        {
+            <div class="header-cart">
+                <div class="header-cart-wrap">
+                    <i class="fa fa-shopping-cart"></i>
+                    Giỏ hàng(@ViewBag.TongSL)
+                    <div class="header_cart-list header_cart-list--no-cart">
+                        <img src="~/San_Pham/no-cart.png" class="header_cart-img">
+                        <span class="header_cart-list--no-cart-msg">
+                            chưa có sản phẩm
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <i class="fa fa-shopping-cart"></i>
+            <span>Giỏ hàng(@ViewBag.TongSL)</span>
+        }
+    </a>
+</li>
+
+
+

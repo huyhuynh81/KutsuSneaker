@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="~/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/css/lightbox.css">
+</head>
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/Admin/Index" class="logo">
+                            <img src="~/San_Pham/logo_kutsu.png" width="180px" height="50px" />
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section">
+                                @Html.ActionLink("Nhân viên", "Admin", "Admin")
+                            </li>
+                            <li class="scroll-to-section">
+                                @Html.ActionLink("Sản phẩm", "SanPham", "Admin")
+                            </li>
+                            <li class="scroll-to-section">
+                                @Html.ActionLink("Nhãn hiệu", "NhanHieu", "Admin")
+                            </li>
+                            <li class="scroll-to-section">
+                                @Html.ActionLink("Khách hàng", "KhachHang", "Admin")
+                            </li>
+                            <li class="scroll-to-section">
+                                @Html.ActionLink("Đơn đặt hàng", "HoaDon", "Admin")
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="~/San_Pham/logo_kutsu_white.png" alt="hexashop ecommerce templatemo" width="195" height="59px">
+                        </div>
+                        <ul>
+                            <li><a href="#">475A Điện Biên Phủ, P.25, Q.Bình Thạnh, TP.HCM</a></li>
+                            <li><a href="#">huyhuynh811@gmailcom</a></li>
+                            <li><a href="#">097-596-5523</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Sản phẩm &amp; Thương hiệu</h4>
+                    <ul>
+                        <li><a href="#">Jordan</a></li>
+                        <li><a href="#">Nike</a></li>
+                        <li><a href="#">Adidas</a></li>
+                        <li><a href="#">Puma</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="#top">Trang chủ</a></li>
+                        <li><a href="/BanHang/SanPham">Sản phẩm</a></li>
+                        <li><a href="#explore">Pre-Order</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Hỗ trợ &amp; Thông tin</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>
+                            Copyright © 2022 HPT Team Co., Ltd. All Rights Reserved.
+                        </p>
+                        <br /><p>Design by: HPT TEAM</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/profile.php?id=100010513748418"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/h.tmh_/"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/Scripts/owl-carousel.js"></script>
+    <script src="~/Scripts/accordions.js"></script>
+    <script src="~/Scripts/datepicker.js"></script>
+    <script src="~/Scripts/scrollreveal.min.js"></script>
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <script src="~/Scripts/jquery.counterup.min.js"></script>
+    <script src="~/Scripts/imgfix.min.js"></script>
+    <script src="~/Scripts/slick.js"></script>
+    <script src="~/Scripts/lightbox.js"></script>
+    <script src="~/Scripts/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+    </script>
+</body>
+</html>
