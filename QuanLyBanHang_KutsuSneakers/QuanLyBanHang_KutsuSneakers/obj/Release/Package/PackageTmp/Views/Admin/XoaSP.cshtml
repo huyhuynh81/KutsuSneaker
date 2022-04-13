@@ -1,0 +1,88 @@
+﻿@model QuanLyBanHang_KutsuSneakers.Models.SANPHAM
+
+@{
+    ViewBag.Title = "XoaSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+    <h2>XÁC NHẬN THÔNG TIN SẢN PHẨM CẦN XÓA</h2>
+
+    <h3>Bạn có chắc muốn xóa sản phẩm này ?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sản phẩm:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TENSP)
+            </dd>
+            <dt>
+                Giá bán:
+            </dt>
+            <dd>
+                @String.Format("{0:0,0}", Model.DONGIA) VNĐ
+            </dd>
+            <dt>
+                Mô tả:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MOTA)
+            </dd>
+            <dt>
+                Ngày cập nhật:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.NGAYCAPNHAT)
+            </dd>
+            <dt>
+                Ảnh sản phẩm:
+            </dt>
+            <dd>
+                <img src="@Url.Content("~/San_Pham/" + Model.ANHSP)" width="250px" />
+            </dd>
+            <dt>
+                Mã loại:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MALOAI)
+            </dd>
+            <dt>
+                Mã nhãn hiệu:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MANH)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa sản phẩm" class="btn btn-default" /> |
+                @Html.ActionLink("Trở về trang quản lý sản phẩm", "SanPham")
+            </div>
+        }
+    </div>
+</body>

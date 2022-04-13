@@ -1,0 +1,176 @@
+﻿@using QuanLyBanHang_KutsuSneakers.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+}
+<style>
+    .search-box {
+       position:absolute;
+       top:93%;
+       left:71%;
+       transform:translate(-50%,-50%);
+       background:#2f3640;
+       height:40px;
+       border-radius:40px;
+      
+    }
+        .search-box:hover > .search-txt {
+            width: 360px;
+            padding: 0 6px;
+        }
+
+        .search-box:hover > .search-btn {
+            background: white;
+        }
+    .search-btn {
+        color: #e84118;
+        float: right;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #2f3640;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s;
+    }
+
+    .search-txt {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: #FFF;
+        font-size: 16px;
+        transition: 0.4s;
+        line-height: 40px;
+        margin-left: 18px;
+        width:0px;
+    }
+
+
+
+
+</style>
+<!-- ***** New - in Start ******-->
+<body>
+    <link rel="stylesheet" type="text/css" href="~/css/Slidebar.css">
+    <!-- ***** Main Banner Area Start ***** -->
+    <!-- Slideshow container -->
+
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <img src="~/San_Pham/banner-1.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/San_Pham/banner-2.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="~/San_Pham/banner-3.jpg" style="width:100%">
+        </div>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+    @using (Html.BeginForm("SanPham", "BanHang"))
+    {
+    <div class="search-box">
+            <input type="text" placeholder="Nhập để tìm kiếm..." name="Search" class="search-txt" />
+            <button type="submit" class="search-btn"><i class="fa fa-search" id="icon-search"></i></button>
+    </div>
+    }
+    <section class="section" id="products">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Sản phẩm mới nhất</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var sp in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <a href="@Url.Action("Details", "BanHang", new { id = sp.MASP})">
+                                        <img src="~/San_Pham/@sp.ANHSP" alt="@sp.TENSP">
+                                    </a>
+                                </div>
+                                <div class="down-content">
+                                    <h4>@sp.TENSP</h4>
+                                    <span>@String.Format("{0:0,0}", sp.DONGIA) VNĐ</span>
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="pagination">
+                <ul>
+                    <li>
+                        Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                    </li>
+                    <li>
+                        @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page }))
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- ***** New - in End ******-->
+</body>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 1500); // Change image every 2 seconds
+    }
+</script>

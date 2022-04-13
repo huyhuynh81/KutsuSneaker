@@ -1,0 +1,12 @@
+﻿@model IEnumerable<QuanLyBanHang_KutsuSneakers.Models.NHANHIEU>
+<ul>
+    <li>
+        @foreach (var nh in Model)
+        {
+            <a href="@Url.Action("SPtheoNhanHieu", "BanHang", new { id = nh.MANH})">
+                @nh.TENNH
+            </a>
+        }
+    </li>
+</ul>
+

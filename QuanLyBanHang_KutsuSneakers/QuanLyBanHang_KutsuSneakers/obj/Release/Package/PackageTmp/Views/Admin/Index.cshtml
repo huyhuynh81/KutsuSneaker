@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    body {
+        margin-top: 200px;
+    }
+
+    .main-1{
+        margin-left:20px;
+    }
+
+    .product button {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        width: 100px;
+    }
+
+    .Staff button {
+        padding-bottom: 20px;
+        padding-top: 20px;
+        width: 100px;
+    }
+
+    .product {
+    }
+
+
+    h3 {
+        border-bottom: 2px solid aqua;
+        padding-bottom: 5px;
+    }
+
+    #name {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .sanpham1 {
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sanpham2 {
+        margin-top: 20px;
+        margin-left: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .chia {
+        display: grid;
+        grid-template-columns: 140px 150px;
+        align-items: center;
+    }
+
+    .khachhang1 {
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .khachhang2 {
+        margin-top: 20px;
+        margin-left: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .Staff {
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .phu {
+        font-size: 50px;
+    }
+</style>
+<body>
+    <div class="main-1">
+        <div class="sanpham">
+            <h3 class="title">Sản phẩm</h3>
+            <div class="chia">
+                <div class="sanpham1 ">
+                    <a class="product" href="/Admin/SanPham"><button class="fa-brands fa-product-hunt phu"></button></a>
+                    <h2 id="name">Sản phẩm</h2>
+                </div>
+                <div class="sanpham2 ">
+                    <a class="product" href="/Admin/NhanHieu"><button class="fa-brands fa-bootstrap phu"></button></a>
+                    <h2 id="name">Nhãn hiệu</h2>
+                </div>
+            </div>
+
+        </div>
+        <div class="khachhang">
+            <h3 class="title" style="margin-top:30px;">Bán hàng</h3>
+            <div class="chia">
+                <div class="khachhang1 ">
+                    <a class="product" href="/Admin/KhachHang"><button class="fa fa-user phu"></button></a>
+                    <h2 id="name">Khách hàng</h2>
+                </div>
+                <div class="khachhang2 ">
+                    <a class="product" href="/Admin/HoaDon"><button <i class="fa fa-shopping-bag phu"></i></button></a>
+                    <h2 id="name">Đơn đặt hàng</h2>
+                </div>
+            </div>
+        </div>
+        <div class="nhanvien">
+            <h3 class="title" style="margin-top:30px;">Nhân viên</h3>
+            <div class="chia">
+                <div class="Staff ">
+                    <a class="Staff-1" href="/Admin/Admin"><button><i class="fa-solid fa-chalkboard-user fa-2x"></i></button></a>
+                    <h2 id="name">Nhân viên</h2>
+                </div>
+
+
+            </div>
+            </div>
+</body>
+

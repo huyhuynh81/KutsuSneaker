@@ -1,0 +1,74 @@
+﻿@model QuanLyBanHang_KutsuSneakers.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "DetailsKH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    dt {
+        display: inline;
+    }
+
+    h2 {
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+    <h2>Chi tiết sản phẩm</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên khách hàng:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TENKH)
+            </dd>
+            <dt>
+                UserName:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.USERNAME)
+            </dd>
+            <dt>
+                Password:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MATKHAU)
+            </dd>
+            <dt>
+                Địa Chỉ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DIACHI)
+            </dd>
+            <dt>
+                Số điện thoại
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+            <dt>
+                Email:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>

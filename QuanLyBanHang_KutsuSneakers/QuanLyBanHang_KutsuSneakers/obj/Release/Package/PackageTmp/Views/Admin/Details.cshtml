@@ -1,0 +1,78 @@
+﻿@model QuanLyBanHang_KutsuSneakers.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .dl-horizontal {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    dt{
+        display:inline;
+    }
+    h2{
+        padding-top:120px;
+        text-align:center;
+    }
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<body>
+    <h2>Chi tiết sản phẩm</h2>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên sản phẩm:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TENSP)
+            </dd>
+            <dt>
+                Giá bán:
+            </dt>
+            <dd>
+                @String.Format("{0:0,0}", Model.DONGIA) VNĐ
+            </dd>
+            <dt>
+                Mô tả:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MOTA)
+            </dd>
+            <dt>
+                Ngày cập nhật:
+            </dt>
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.NGAYCAPNHAT)
+            </dd>
+            <dt>
+                Ảnh sản phẩm:
+            </dt>
+            <dd>
+                <img src="@Url.Content("~/San_Pham/" + Model.ANHSP)" width="250px"/>
+            </dd>
+            <dt>
+                Mã loại:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MALOAI)
+            </dd>
+            <dt>
+                Mã nhãn hiệu:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MANH)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MASP }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>

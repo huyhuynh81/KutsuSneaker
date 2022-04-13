@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    .current {
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: 2px solid #000;
+        box-shadow: inherit;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #tab-list .item{
+       border-radius: 5px;
+    }
+
+</style>
+<body>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <section class="section" id="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="left-images">
+                        <img src="~/San_Pham/@Model.ANHSP" alt="@Model.TENSP">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="right-content">
+                        <h4>@Model.TENSP</h4>
+                        <span class="price">@String.Format("{0:0,0}", Model.DONGIA) VNĐ</span>
+                        <ul class="stars">
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                        <span>@Model.MOTA</span>
+                        <div class="quantity-content">
+                            <div class="left-content">
+                                <h6>Số lượng</h6>
+                            </div>
+                            <div class="right-content">
+                                <div class="quantity buttons_added">
+                                    <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="pagination">
+                                <ul id="tab-list">
+                                    <li class="item">
+                                        @Html.Action("Size", "BanHang")
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <div class="main-border-button"><a href="javascript: ThemGH('@Model.MASP', ' ')">Đặt mua</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Action("SPLienQuan", "BanHang")
+</body>
+<script>
+    var size = 39;
+    function changeSize(Size) {
+        size = Size;
+    }
+    let x = document.getElementsByClassName("submit");
+    for (let i = 0; i < x.length; i++) {
+        x[i].onclick = function () {
+            if (this.style.color !== "white") {
+                this.style.backgroundColor = "black";
+                this.style.color = "white";
+            }
+            else {
+                this.style.backgroundColor = "white";
+                this.style.color = "black";
+            }
+        };
+    }
+    function ThemGH(MaSP, strURL) {
+        location.href = "../../../GioHang/ThemGioHang?MaSP=" + MaSP + "&Size=" + size + "&strURL=" + strURL;
+    }
+    const otems = document.getElementsByClassName('item')
+
+</script>

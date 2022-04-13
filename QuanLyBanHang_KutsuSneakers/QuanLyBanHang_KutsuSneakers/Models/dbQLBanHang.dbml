@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLBH" Class="dbQLBanHangDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ADMIN;Initial Catalog=QLBH;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLBHConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADMIN" Member="ADMINs">
+    <Type Name="ADMIN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TENADMIN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ROLEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ROLE_ADMIN" Member="ROLE" ThisKey="ROLEID" OtherKey="ROLEID" Type="ROLE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TINHTRANG" Member="TINHTRANGs">
+    <Type Name="TINHTRANG">
+      <Column Name="MATT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENTT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="TINHTRANG_HOADON" Member="HOADONs" ThisKey="MATT" OtherKey="MATT" Type="HOADON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTSP" Member="CTSPs">
+    <Type Name="CTSP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MASP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SLTONKHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SIZE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MAU" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="SANPHAM_CTSP" Member="SANPHAM" ThisKey="MASP" OtherKey="MASP" Type="SANPHAM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTHD" Member="CTHDs">
+    <Type Name="CTHD">
+      <Column Name="MAHD" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SLBAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SIZE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GIABAN" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="HOADON_CTHD" Member="HOADON" ThisKey="MAHD" OtherKey="MAHD" Type="HOADON" IsForeignKey="true" />
+      <Association Name="SANPHAM_CTHD" Member="SANPHAM" ThisKey="MASP" OtherKey="MASP" Type="SANPHAM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOADON" Member="HOADONs">
+    <Type Name="HOADON">
+      <Column Name="MAHD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MAPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATHANHTOAN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MATT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGAYDATHANG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGAYNHANHANG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HOADON_CTHD" Member="CTHDs" ThisKey="MAHD" OtherKey="MAHD" Type="CTHD" />
+      <Association Name="TINHTRANG_HOADON" Member="TINHTRANG" ThisKey="MATT" OtherKey="MATT" Type="TINHTRANG" IsForeignKey="true" />
+      <Association Name="KHACHHANG_HOADON" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
+      <Association Name="PHUONGTHUCTHANHTOAN_HOADON" Member="PHUONGTHUCTHANHTOAN" ThisKey="MAPT" OtherKey="MAPT" Type="PHUONGTHUCTHANHTOAN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
+    <Type Name="KHACHHANG">
+      <Column Name="MAKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENKH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MATKHAU" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="KHACHHANG_HOADON" Member="HOADONs" ThisKey="MAKH" OtherKey="MAKH" Type="HOADON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAISANPHAM" Member="LOAISANPHAMs">
+    <Type Name="LOAISANPHAM">
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="LOAISANPHAM_SANPHAM" Member="SANPHAMs" ThisKey="MALOAI" OtherKey="MALOAI" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHANHIEU" Member="NHANHIEUs">
+    <Type Name="NHANHIEU">
+      <Column Name="MANH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENNH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="NHANHIEU_SANPHAM" Member="SANPHAMs" ThisKey="MANH" OtherKey="MANH" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHUONGTHUCTHANHTOAN" Member="PHUONGTHUCTHANHTOANs">
+    <Type Name="PHUONGTHUCTHANHTOAN">
+      <Column Name="MAPT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENPT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PHUONGTHUCTHANHTOAN_HOADON" Member="HOADONs" ThisKey="MAPT" OtherKey="MAPT" Type="HOADON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ROLE" Member="ROLEs">
+    <Type Name="ROLE">
+      <Column Name="ROLEID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ROLENAME" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="MOTA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="ROLE_ADMIN" Member="ADMINs" ThisKey="ROLEID" OtherKey="ROLEID" Type="ADMIN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SANPHAM" Member="SANPHAMs">
+    <Type Name="SANPHAM">
+      <Column Name="MASP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENSP" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DONGIA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MOTA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NGAYCAPNHAT" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ANHSP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MALOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MANH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SANPHAM_CTSP" Member="CTSPs" ThisKey="MASP" OtherKey="MASP" Type="CTSP" />
+      <Association Name="SANPHAM_CTHD" Member="CTHDs" ThisKey="MASP" OtherKey="MASP" Type="CTHD" />
+      <Association Name="LOAISANPHAM_SANPHAM" Member="LOAISANPHAM" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAISANPHAM" IsForeignKey="true" />
+      <Association Name="NHANHIEU_SANPHAM" Member="NHANHIEU" ThisKey="MANH" OtherKey="MANH" Type="NHANHIEU" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
