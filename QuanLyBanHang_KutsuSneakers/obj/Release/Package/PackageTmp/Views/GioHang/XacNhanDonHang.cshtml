@@ -90,19 +90,6 @@
         text-align: center;
     }
 
-    .btn-back {
-        height: 70px;
-        width: 220px;
-        font-size: 20px;
-        background-image: radial-gradient(#bfffcd, #93efdd);
-        color: white;
-        border-radius: 30px;
-        border-inline-color: white;
-    }
-        .btn-back:hover{
-            cursor: pointer;
-        }
-
     .cbuoc {
         height: 50px;
         width: 65%;
@@ -146,10 +133,50 @@
         width: 20px;
     }
 
-    a {
-        text-decoration: none;
-        color: white;
+    .container-1 {
+        height: 136px;
+        display: flex;
+        align-items: center;
+        position: relative;
     }
+
+    .buttons {
+        position: absolute;
+        left: 35%;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 20px 50px;
+        font-size: 16px;
+        position: relative;
+        margin: 32px;
+    }
+
+    .btn-2 {
+        color: #000;
+        background-color: #FFF;
+    }
+
+        .btn-2::after, .btn-2::before {
+            border: 3px solid black;
+            content: "";
+            position: absolute;
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            left: 0;
+            bottom: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-2:hover::after {
+            transform: translate(-5px,-5px);
+            cursor:pointer;
+        }
+
+        .btn-2:hover::before {
+            transform: translate(5px,5px);
+        }
 </style>
 <body>
     <div class="cbuoc">
@@ -189,8 +216,12 @@
             <p>Đơn hàng của quý khách đã được gửi.</p>
             <p>Kutsu Sneaker sẽ liên hệ với quý khác trong thời gian sớm nhất và giao hàng đúng hẹn</p>
         </div>
-        <div class="note-3">
-            <button class="btn-back"><a href="/BanHang/Index">Quay về trang chủ</a></button>
+        <div class="container-1">
+            <div class="buttons">
+                <button type="button" class="btn btn-2" onclick="location.href='@Url.Action("Index", "BanHang")'">
+                    Quay về trang chủ
+                </button>
+            </div>
         </div>
     </div>
 </body>

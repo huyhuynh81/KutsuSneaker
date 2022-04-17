@@ -113,7 +113,7 @@ namespace QuanLyBanHang_KutsuSneakers.Controllers
             string accessKey = "fRQ0wN4mfDJaLHkE";
             string serectkey = "0TkYW863u83NbGHdRq1uBXoXk4GuC8Tf";
             string orderInfo = "test";
-            string returnUrl = "https://localhost:44302//GioHang/XacNhanDonhang";
+            string returnUrl = "https://thekutsusneaker.tk//GioHang/XacNhanDonhang";
             string notifyurl = "http://ba1adf48beba.ngrok.io/Home/SavePayment";
 
             string amount = lsGioHang.Sum(n => n.ThanhTien).ToString();

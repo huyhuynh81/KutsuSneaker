@@ -4,6 +4,7 @@
     ViewBag.Title = "SuaSP";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <style>
     h2 {
         padding-top: 120px;
@@ -18,7 +19,7 @@
 <body>
     <h2>Chỉnh sửa thông tin sản phẩm</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("SuaSP", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
@@ -68,7 +69,7 @@
                 @Html.LabelFor(model => model.ANHSP, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     Chọn ảnh mới
-                    <input type="file" name="fileupload"/>
+                    <input type="file" name="fileUpLoad" />
                     <img src="@Url.Content("~/San_Pham/" + Model.ANHSP)" width="250px" />
                     @ViewBag.Thongbao
                 </div>
@@ -90,7 +91,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Cập nhật" class="btn btn-default" />
+                    <input type="submit" value="Lưu" class="btn btn-default" />
                 </div>
             </div>
         </div>
@@ -100,8 +101,3 @@
         @Html.ActionLink("Trở về trang quản lý sản phẩm", "SanPham")
     </div>
 </body>
-<script type="text/javascript">
-    function AutoUpload() {
-        document.getElementById("formupload").submit();
-    }
-</script>

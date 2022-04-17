@@ -184,27 +184,21 @@ namespace QuanLyBanHang_KutsuSneakers.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult SuaSP(int id, SANPHAM sp, HttpPostedFileBase fileupload)
+        public ActionResult SuaSP(int id, SANPHAM sp, HttpPostedFileBase fileUpLoad)
         {
             ADMIN ad = (ADMIN)Session["Taikhoan"];
             if (ad.ROLEID == 1)
             {
                 sp = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
+                ViewBag.MASP = sp.MASP;
                 ViewBag.MALOAI = new SelectList(data.LOAISANPHAMs.ToList().OrderBy(n => n.TENLOAI), "MALOAI", "TENLOAI", sp.MALOAI);
                 ViewBag.MANH = new SelectList(data.NHANHIEUs.ToList().OrderBy(n => n.TENNH), "MANH", "TENNH", sp.MANH);
-                if (fileupload == null)
-                {
-                    SANPHAM spcu = data.SANPHAMs.SingleOrDefault(n => n.MASP == sp.MASP);
-                    sp.ANHSP = spcu.ANHSP;
-                    UpdateModel(sp);
-                    data.SubmitChanges();
-                    return RedirectToAction("SanPham");
-                }
-                else
+                if (fileUpLoad != null)
                 {
                     if (ModelState.IsValid)
                     {
-                        var fileName = Path.GetFileName(fileupload.FileName);
+                        var fileName = Path.GetFileName(fileUpLoad.FileName);
+                        fileName = DateTime.Now.ToString("ddMMyyyymm") + fileName;
                         var path = Path.Combine(Server.MapPath("~/San_Pham"), fileName);
                         if (System.IO.File.Exists(path))
                         {
@@ -212,12 +206,20 @@ namespace QuanLyBanHang_KutsuSneakers.Controllers
                         }
                         else
                         {
-                            fileupload.SaveAs(path);
+                            fileUpLoad.SaveAs(path);
                         }
-                        sp.ANHSP = fileName;
+                        sp.ANHSP = fileName ;
                         UpdateModel(sp);
                         data.SubmitChanges();
                     }
+                    return RedirectToAction("SanPham");
+                }
+                else
+                {
+                    SANPHAM sp1 = data.SANPHAMs.SingleOrDefault(n => n.MASP == id);
+                    sp1.ANHSP = sp.ANHSP;
+                    UpdateModel(sp);
+                    data.SubmitChanges();
                     return RedirectToAction("SanPham");
                 }
             }

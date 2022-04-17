@@ -395,7 +395,6 @@
     <Content Include="tinymce\js\tinymce\langs\README.md" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\XoaSP.cshtml" />
-    <Content Include="Views\Admin\SuaSP.cshtml" />
     <Content Include="Views\BanHang\SPLienQuan.cshtml" />
     <Content Include="Views\Admin\NhanHieu.cshtml" />
     <Content Include="Views\Admin\ThemNH.cshtml" />
@@ -412,6 +411,7 @@
     <Content Include="Views\Admin\XoaAdmin.cshtml" />
     <Content Include="Views\BanHang\ChinhSachHoTro.cshtml" />
     <Content Include="Views\Admin\Error.cshtml" />
+    <Content Include="Views\Admin\SuaSP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
